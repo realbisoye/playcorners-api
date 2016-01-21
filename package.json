@@ -1,0 +1,43 @@
+{
+  "name": "playcorners",
+  "version": "0.0.1",
+  "description": "get details, updates, and information on events and fun places happening around you. With directions to the venue.",
+  "main": "app.js",
+  "scripts": {
+    "test": "gulp run-test",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andela-batolagbe/playcorners.git"
+  },
+  "keywords": [
+    "palycorners"
+  ],
+  "author": "Atolagbe Bisoye",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/andela-batolagbe/playcorners/issues"
+  },
+  "homepage": "https://github.com/andela-batolagbe/playcorners#readme",
+  "dependencies": {
+    "bcrypt": "^0.8.5",
+    "body-parser": "latest",
+    "cloudinary": "^1.3.0",
+    "cookie-parser": "^1.4.1",
+    "express-session": "latest",
+    "jsonwebtoken": "latest",
+    "method-override": "^2.3.5",
+    "mongoose": "latest",
+    "morgan": "^1.6.1",
+    "multer": "^1.1.0",
+    "q": "^1.4.1"
+  },
+  "devDependencies": {
+    "dotenv": "^2.0.0",
+    "gulp": "latest",
+    "jasmine": "latest",
+    "jasmine-node": "latest",
+    "karma": "latest"
+  }
+}
