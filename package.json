@@ -1,7 +1,7 @@
 {
-  "name": "playcorners",
+  "name": "playcorners-api",
   "version": "0.0.1",
-  "description": "get details, updates, and information on events and fun places happening around you. With directions to the venue.",
+  "description": "api for the playcorners web app",
   "main": "app.js",
   "scripts": {
     "test": "gulp run-test",
@@ -36,8 +36,10 @@
   "devDependencies": {
     "dotenv": "^2.0.0",
     "gulp": "latest",
+    "gulp-jasmine-node": "^1.0.3",
     "jasmine": "latest",
     "jasmine-node": "latest",
-    "karma": "latest"
+    "karma": "latest",
+    "supertest": "^1.1.0"
   }
 }
