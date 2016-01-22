@@ -24,7 +24,8 @@ module.exports = {
         });
       } else {
         var validatePassword = user.verifyPassword(req.body.password);
-        if (!validPassword) {
+
+        if (!validatePassword) {
           return res.status(401).send({
             success: false,
             message: 'Invalid Username or Password!'
@@ -43,6 +44,7 @@ module.exports = {
       }
     })
     .catch(function(err){
+      console.log(err);
     	res.status(500)
     	.send({
     		success: false,
