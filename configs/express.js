@@ -49,7 +49,7 @@ var storage = multer.diskStorage({
 
 app.use(multer({
   storage: storage
-}).single('hairPhoto'));
+}).single('photo'));
 
 /*override with the X-HTTP-Method-Override
 header in the request. simulate DELETE/PUT
