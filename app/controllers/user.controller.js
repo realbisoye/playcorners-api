@@ -51,7 +51,7 @@ module.exports = {
           // save all event data
           var newUser = new User(data);
           newUser.avatar = response.url;
-          User.save()
+          newUser.save()
           .then(function(user) {
 
             res.status(200)
@@ -74,9 +74,9 @@ module.exports = {
           });
       } 
     } else {
-      
-      //save data if no venue picture was provided 
+     // save data if no venue picture was provided 
       var data = req.body;
+      console.log(data);
 
       if (!data.username) {
         res.status(401)
@@ -98,7 +98,7 @@ module.exports = {
           });
       } else {
         var newUser = new User(data);
-        User.save()
+        newUser.save()
         .then(function(user) {
 
           res.status(200)
@@ -137,8 +137,9 @@ module.exports = {
   },
 
   updateProfile: function(req, res) {
-    User.findByIdAndUpdate(req.params.id)
+    User.findByIdAndUpdate(req.params.id, req.body)
     .then(function(user){
+      console.log(user);
       res.status(200)
         .send({
           status: true,
