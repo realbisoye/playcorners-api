@@ -4,6 +4,8 @@
   "description": "api for the playcorners web app",
   "main": "app.js",
   "scripts": {
+    "pretest": "rm -rf pics/* ",
+    "prestart": "rm -rf pics/*",
     "test": "gulp run-test",
     "start": "nodemon server.js"
   },
