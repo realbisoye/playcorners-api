@@ -31,10 +31,17 @@ module.exports = {
           status: false,
           message: 'Invalid event description provided'
         });
+    } else if (!data.date) {
+      res.status(401)
+        .send({
+          status: false,
+          message: 'Invalid event description provided'
+        });    
     } else {
-
+      var eventDate = new Date(data.date)
+      console.log(eventDate)
 			var newEvent = new Event(data)
-      newEvent.venue = data.venue._id 
+      newEvent.date = eventDate 
 			
       newEvent.save()
 			.then(function(val) {
@@ -59,6 +66,7 @@ module.exports = {
 
   getAllEvents: function(req, res){
     Event.find()
+    .populate('venue')
     .then(function(events){
       res.status(200)
       .send(events)
@@ -75,6 +83,7 @@ module.exports = {
 
   getAnEvent: function(req, res){
     Event.findById(req.params.id)
+    .populate('venue')
     .then(function(evnt){
       res.status(200)
       .send(evnt);
@@ -90,7 +99,7 @@ module.exports = {
   },
 
 	updateEvent: function(req, res) {
-		Event.findByIdAndUpdate(req.params.id)
+		Event.findByIdAndUpdate(req.params.id, req.body)
 		.then(function(evnt){
 			res.status(200)
 				.send({
