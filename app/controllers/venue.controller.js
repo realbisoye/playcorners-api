@@ -44,7 +44,7 @@ module.exports = {
           // save all event data
           var newVenue = new Venue(data);
           newVenue.image = response.url;
-          hairStyle.save()
+          newVenue.save()
           .then(function(venue) {
 
             res.status(200)
@@ -109,7 +109,7 @@ module.exports = {
   },
 
 	updateVenue: function(req, res) {
-		Venue.findByIdAndUpdate(req.params.id)
+		Venue.findByIdAndUpdate(req.params.id, req.body)
 		.then(function(venue){
 			res.status(200)
 				.send({
