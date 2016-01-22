@@ -6,7 +6,7 @@
   "scripts": {
     "pretest": "rm -rf pics/* ",
     "prestart": "rm -rf pics/*",
-    "test": "gulp run-test",
+    "test": "echo \"no test specified yet \"",
     "start": "nodemon server.js"
   },
   "repository": {
