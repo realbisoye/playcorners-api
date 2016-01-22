@@ -4,7 +4,7 @@ var venueCtrl = require('../controllers/venue.controller');
 var auth = require('../auth/auth');
 
 function eventRoutes (router) {
-  router.route('/events/:id/venue')
+  router.route('/venue')
     .post(auth.authenticate, venueCtrl.addVenue);
 	
 	router.route('/events/:id/venue/:id')
