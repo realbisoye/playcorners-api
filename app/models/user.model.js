@@ -52,7 +52,7 @@ userSchema.pre('save', function(next) {
 //compare provided password
 userSchema.methods.verifyPassword = function(password) {
   var user = this;
-  return bcrypt.compare(user.password, hash)
+  return bcrypt.compareSync(password, user.password);
 };
 
 module.exports = mongoose.model('User', userSchema);
