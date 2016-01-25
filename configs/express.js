@@ -11,11 +11,13 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var morgan = require('morgan');
 var multer = require('multer');
+var mongoose =require('mongoose');
+var mongoStore = require('connect-mongo')(session);
 
 var router = express.Router();
-var config= require('./config');
+var config = require('./config');
 var db = require('./db');
-var routes =require('../app/routes')
+var routes = require('../app/routes')
 
 routes(router);
 
@@ -23,32 +25,35 @@ routes(router);
 app.use(bodyParser.json());
 
 app.use(bodyParser.json({
-  type: 'application/vnd.api+json'
+    type: 'application/vnd.api+json'
 }));
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({
-  extended: true
+    extended: true
 }));
 
 app.use(session({
-  secret: config.secret,
-  saveUninitialized: true,
-  resave: false
+    secret: config.secret,
+    store: new mongoStore({
+        mongooseConnection: mongoose.connection
+    }),
+    saveUninitialized: true,
+    resave: false
 }));
 
 //multer properties for saving into file with an assigned name.
 var storage = multer.diskStorage({
-  destination: function(req, file, cb) {
-    cb(null, './pics/');
-  },
-  filename: function(req, file, cb) {
-    cb(null, file.fieldname + '-' + Date.now('mm/dd/yyyy'));
-  }
+    destination: function(req, file, cb) {
+        cb(null, './pics/');
+    },
+    filename: function(req, file, cb) {
+        cb(null, file.fieldname + '-' + Date.now('mm/dd/yyyy'));
+    }
 });
 
 app.use(multer({
-  storage: storage
+    storage: storage
 }).single('photo'));
 
 /*override with the X-HTTP-Method-Override
